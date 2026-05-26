@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Trusted Malaysia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top left,#ff00ff22,transparent 20%),
+radial-gradient(circle at bottom right,#00c3ff22,transparent 20%),
+linear-gradient(135deg,#120018,#3a0066,#180028);
+min-height:100vh;
+padding:25px;
+overflow-x:hidden;
+color:white;
+}
+
+.title{
+text-align:center;
+margin-bottom:40px;
+animation:fade 1s ease;
+}
+
+.title h1{
+font-size:42px;
+font-weight:800;
+background:linear-gradient(to right,#ff4dff,#67d8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.title p{
+margin-top:8px;
+color:#d7d7d7;
+font-size:15px;
+}
+
+.section-title{
+font-size:30px;
+font-weight:800;
+margin:50px 0 25px;
+text-align:center;
+background:linear-gradient(to right,#ff4dff,#67d8ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.card{
+position:relative;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(14px);
+padding:28px;
+border-radius:28px;
+overflow:hidden;
+transition:0.35s;
+box-shadow:
+0 0 20px #ff00ff22,
+0 0 40px #00c3ff11;
+animation:up 0.6s ease;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 25px #ff00ff66,
+0 0 50px #00c3ff33;
+}
+
+.glow{
+position:absolute;
+top:-50px;
+right:-50px;
+width:160px;
+height:160px;
+background:linear-gradient(#ff00ff,#00c3ff);
+filter:blur(70px);
+opacity:0.25;
+border-radius:50%;
+}
+
+.profile{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
+}
+
+.profile img{
+width:75px;
+height:75px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid rgba(255,255,255,0.2);
+box-shadow:0 0 20px #00c3ff77;
+}
+
+.profile-text h2{
+font-size:24px;
+font-weight:700;
+}
+
+.profile-text p{
+font-size:14px;
+color:#d0d0d0;
+margin-top:3px;
+}
+
+.badge{
+display:inline-block;
+padding:6px 14px;
+border-radius:50px;
+font-size:12px;
+font-weight:700;
+margin-top:10px;
+background:linear-gradient(to right,#00c3ff,#8f00ff);
+box-shadow:0 0 15px #00c3ff55;
+}
+
+.number{
+margin:20px 0;
+font-size:18px;
+font-weight:600;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:15px;
+border:none;
+border-radius:18px;
+font-size:16px;
+font-weight:700;
+text-decoration:none;
+text-align:center;
+color:white;
+margin-top:12px;
+transition:0.3s;
+cursor:pointer;
+}
+
+.ws{
+background:linear-gradient(to right,#00c3ff,#009dff);
+box-shadow:0 0 20px #00c3ff55;
+}
+
+.ws:hover{
+transform:scale(1.03);
+box-shadow:0 0 25px #00c3ff;
+}
+
+.deleteBtn{
+background:linear-gradient(to right,#ff004c,#ff0000);
+box-shadow:0 0 20px #ff003355;
+}
+
+.adminBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+cursor:pointer;
+background:linear-gradient(to right,#ff00ff,#00c3ff);
+box-shadow:0 0 20px #ff00ff88;
+z-index:999;
+}
+
+.panel{
+max-width:700px;
+margin:50px auto 0;
+padding:25px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.12);
+backdrop-filter:blur(14px);
+border-radius:25px;
+display:none;
+}
+
+.panel h3{
+margin-bottom:20px;
+font-size:25px;
+}
+
+.input{
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+margin-bottom:15px;
+border-radius:15px;
+background:rgba(255,255,255,0.08);
+color:white;
+font-size:15px;
+}
+
+.input::placeholder{
+color:#cfcfcf;
+}
+
+.addBtn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:15px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+color:white;
+background:linear-gradient(to right,#ff00ff,#00c3ff);
+box-shadow:0 0 20px #ff00ff55;
+}
+
+@keyframes up{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+</style>
+</head>
+<body>
+
+<div class="title">
+<h1>Seller Trusted Malaysia</h1>
+<p>Premium Trusted Seller & Scammer List</p>
+</div>
+
+<!-- SELLER -->
+<h2 class="section-title">TRUSTED SELLER</h2>
+<div class="container" id="sellerContainer"></div>
+
+<!-- SCAMMER -->
+<h2 class="section-title">SCAMMER LIST</h2>
+<div class="container" id="scammerContainer"></div>
+
+<!-- ADMIN PANEL -->
+<div class="panel" id="adminPanel">
+
+<h3>ADD DATA</h3>
+
+<input type="text" id="type" class="input" placeholder="seller / scammer">
+
+<input type="text" id="name" class="input" placeholder="Name">
+
+<input type="text" id="desc" class="input" placeholder="Description">
+
+<input type="text" id="number" class="input" placeholder="60123456789">
+
+<input type="text" id="image" class="input" placeholder="Image URL">
+
+<button class="addBtn" onclick="addData()">ADD NOW</button>
+
+</div>
+
+<!-- ADMIN -->
+<div class="adminBtn" onclick="adminLogin()">
+⚙️
+</div>
+
+<script>
+
+// DEFAULT DATABASE
+if(!localStorage.getItem("db")){
+
+const data = {
+
+seller:[
+
+{
+name:"Kizx Store",
+desc:"Official Trusted Seller",
+number:"601161019275",
+image:"https://i.ibb.co/4f9X6tL/avatar.png"
+}
+
+],
+
+scammer:[
+
+]
+
+}
+
+localStorage.setItem("db",JSON.stringify(data))
+
+}
+
+// GET DATABASE
+const db = JSON.parse(localStorage.getItem("db"))
+
+let admin = false
+
+// RENDER
+function render(){
+
+document.getElementById("sellerContainer").innerHTML = ""
+document.getElementById("scammerContainer").innerHTML = ""
+
+db.seller.forEach((x,i)=>{
+
+document.getElementById("sellerContainer").innerHTML += createCard(x,i,"seller")
+
+})
+
+db.scammer.forEach((x,i)=>{
+
+document.getElementById("scammerContainer").innerHTML += createCard(x,i,"scammer")
+
+})
+
+}
+
+// CARD
+function createCard(data,index,type){
+
+return `
+
+<div class="card">
+
+<div class="glow"></div>
+
+<div class="profile">
+
+<img src="${data.image}" alt="">
+
+<div class="profile-text">
+
+<h2>${data.name}</h2>
+
+<p>${data.desc}</p>
+
+<div class="badge">${type.toUpperCase()}</div>
+
+</div>
+
+</div>
+
+<div class="number">
+📞 ${data.number}
+</div>
+
+<a href="https://wa.me/${data.number}" target="_blank" class="btn ws">
+Chat WhatsApp
+</a>
+
+${admin ? `
+<button class="btn deleteBtn" onclick="deleteData('${type}',${index})">
+DELETE
+</button>
+` : ""}
+
+</div>
+
+`
+
+}
+
+// ADMIN LOGIN
+function adminLogin(){
+
+const password = prompt("ENTER ADMIN PASSWORD")
+
+if(password === "KizxGantengAmat125"){
+
+admin = true
+
+document.getElementById("adminPanel").style.display = "block"
+
+render()
+
+alert("ADMIN MODE ACTIVE")
+
+}else{
+
+alert("WRONG PASSWORD")
+
+}
+
+}
+
+// ADD DATA
+function addData(){
+
+const type = document.getElementById("type").value
+const name = document.getElementById("name").value
+const desc = document.getElementById("desc").value
+const number = document.getElementById("number").value
+const image = document.getElementById("image").value
+
+if(!type || !name || !number){
+
+alert("PLEASE FILL ALL")
+return
+
+}
+
+const newData = {
+name,
+desc,
+number,
+image
+}
+
+db[type].push(newData)
+
+localStorage.setItem("db",JSON.stringify(db))
+
+render()
+
+alert("SUCCESS ADD")
+
+}
+
+// DELETE
+function deleteData(type,index){
+
+db[type].splice(index,1)
+
+localStorage.setItem("db",JSON.stringify(db))
+
+render()
+
+}
+
+render()
+
+</script>
+
+</body>
+  </html>
