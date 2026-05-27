@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Trusted Malaysia</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#000;
+overflow-x:hidden;
+color:white;
+min-height:100vh;
+}
+
+video.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(1px);
+z-index:-1;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:20px 12px;
+}
+
+.title{
+text-align:center;
+margin-bottom:28px;
+animation:fadeDown 1s ease;
+}
+
+.logo{
+width:90px;
+height:90px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:4px solid rgba(255,255,255,.15);
+box-shadow:
+0 0 20px #8c00ff,
+0 0 35px #00bfff;
+animation:float 3s ease-in-out infinite;
+}
+
+.title h1{
+font-size:38px;
+font-weight:800;
+background:linear-gradient(to right,#ff00ff,#00bfff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.title p{
+margin-top:8px;
+font-size:14px;
+opacity:.8;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:14px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border-radius:24px;
+padding:15px;
+text-align:center;
+box-shadow:
+0 0 15px rgba(0,191,255,.15),
+0 0 25px rgba(255,0,255,.1);
+transition:.3s;
+animation:show .8s ease;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.profile{
+width:72px;
+height:72px;
+border-radius:50%;
+object-fit:cover;
+border:3px solid rgba(255,255,255,.15);
+margin:auto;
+display:block;
+margin-bottom:12px;
+box-shadow:
+0 0 12px #00bfff,
+0 0 20px #ff00ff;
+}
+
+.name{
+font-size:20px;
+font-weight:700;
+margin-bottom:6px;
+}
+
+.role{
+font-size:13px;
+font-weight:700;
+color:#00bfff;
+margin-bottom:10px;
+}
+
+.phone{
+font-size:15px;
+font-weight:600;
+margin-bottom:12px;
+opacity:.9;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:12px;
+border:none;
+border-radius:14px;
+font-size:14px;
+font-weight:700;
+cursor:pointer;
+text-decoration:none;
+text-align:center;
+transition:.3s;
+margin-top:8px;
+}
+
+.wa{
+background:linear-gradient(to right,#00bfff,#0077ff);
+color:white;
+}
+
+.delete{
+background:#ff003c;
+color:white;
+}
+
+.admin-btn{
+position:fixed;
+bottom:18px;
+right:18px;
+width:65px;
+height:65px;
+border:none;
+border-radius:50%;
+font-size:26px;
+cursor:pointer;
+background:linear-gradient(to right,#ff00ff,#00bfff);
+color:white;
+z-index:999;
+box-shadow:
+0 0 18px #00bfff,
+0 0 30px #ff00ff;
+}
+
+.panel{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:1000;
+}
+
+.box{
+background:#120018;
+width:100%;
+max-width:420px;
+padding:25px;
+border-radius:24px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.box h2{
+font-size:26px;
+margin-bottom:18px;
+text-align:center;
+}
+
+.input{
+width:100%;
+padding:14px;
+margin-bottom:14px;
+border:none;
+outline:none;
+border-radius:14px;
+background:rgba(255,255,255,.08);
+color:white;
+font-size:15px;
+}
+
+.save{
+background:linear-gradient(to right,#ff00ff,#00bfff);
+color:white;
+}
+
+.close{
+background:#333;
+color:white;
+}
+
+.preview-img{
+width:80px;
+height:80px;
+border-radius:50%;
+object-fit:cover;
+display:none;
+margin:auto;
+margin-bottom:14px;
+border:3px solid #00bfff;
+}
+
+#tapSound{
+position:fixed;
+inset:0;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:999999;
+cursor:pointer;
+}
+
+#tapSound h1{
+font-size:42px;
+font-weight:800;
+background:linear-gradient(to right,#ff00ff,#00bfff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+#tapSound p{
+margin-top:10px;
+opacity:.8;
+}
+
+@keyframes show{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes fadeDown{
+from{
+opacity:0;
+transform:translateY(-30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-8px);
+}
+100%{
+transform:translateY(0);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="tapSound">
+
+<h1>TAP SCREEN</h1>
+<p>TO ENTER WEBSITE</p>
+
+</div>
+
+<audio id="bgMusic" loop>
+<source src="ssstik.io_1779899398287.mp3" type="audio/mpeg">
+</audio>
+
+<video class="bg" autoplay muted loop playsinline>
+<source src="https://files.catbox.moe/6rh8xt.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="container">
+
+<div class="title">
+
+<img src="https://files.catbox.moe/5d5i9r.jpg" class="logo">
+
+<h1>Seller Trusted Malaysia</h1>
+<p>Official Trusted Seller Website</p>
+
+</div>
+
+<div class="grid" id="sellerList"></div>
+
+</div>
+
+<button class="admin-btn" onclick="openLogin()">⚙</button>
+
+<div class="panel" id="loginPanel">
+<div class="box">
+
+<h2>Admin Login</h2>
+
+<input type="password"
+id="adminPass"
+class="input"
+placeholder="Password">
+
+<button class="btn save"
+onclick="loginAdmin()">
+LOGIN
+</button>
+
+<button class="btn close"
+onclick="closeLogin()">
+CLOSE
+</button>
+
+</div>
+</div>
+
+<div class="panel" id="adminPanel">
+<div class="box">
+
+<h2>Add Seller</h2>
+
+<input type="text"
+id="name"
+class="input"
+placeholder="Seller Name">
+
+<input type="text"
+id="role"
+class="input"
+placeholder="seller/scammer">
+
+<input type="text"
+id="phone"
+class="input"
+placeholder="60123456789">
+
+<input type="file"
+id="uploadImage"
+class="input"
+accept="image/*">
+
+<img id="previewImage"
+class="preview-img">
+
+<button class="btn save"
+onclick="addSeller()">
+ADD SELLER
+</button>
+
+<button class="btn close"
+onclick="closeAdmin()">
+CLOSE
+</button>
+
+</div>
+</div>
+
+<script>
+
+let adminLoggedIn = false;
+
+const password =
+"KizxGantengAmat125";
+
+let sellers = [
+
+{
+name:"Kizx Store",
+role:"SELLER",
+phone:"601161019275",
+image:"https://files.catbox.moe/5d5i9r.jpg"
+},
+
+{
+name:"Kael Store",
+role:"SELLER",
+phone:"60136198316",
+image:"https://files.catbox.moe/sm2lvd.jpg"
+},
+
+{
+name:"IKYY Store",
+role:"SELLER",
+phone:"601161834315",
+image:"https://files.catbox.moe/rj3tbw.jpg"
+},
+
+{
+name:"Minz Store",
+role:"SELLER",
+phone:"60137750974",
+image:"https://files.catbox.moe/qgqf6v.jpg"
+},
+
+{
+name:"Yanzary Store",
+role:"SELLER",
+phone:"601137650485",
+image:"https://files.catbox.moe/bjtvh8.jpg"
+},
+
+{
+name:"Ipanz Store",
+role:"SELLER",
+phone:"60175970694",
+image:"https://files.catbox.moe/wnx2ny.jpg"
+}
+
+];
+
+const sellerList =
+document.getElementById(
+"sellerList"
+);
+
+function render(){
+
+sellerList.innerHTML = "";
+
+sellers.forEach((item,index)=>{
+
+const card =
+document.createElement("div");
+
+card.className = "card";
+
+card.innerHTML = `
+
+<img src="${item.image}"
+class="profile">
+
+<div class="name">
+${item.name}
+</div>
+
+<div class="role">
+${item.role}
+</div>
+
+<div class="phone">
+${item.phone}
+</div>
+
+<a class="btn wa"
+href="https://wa.me/${item.phone}"
+target="_blank">
+
+CHAT WHATSAPP
+
+</a>
+
+${adminLoggedIn ? `
+
+<button class="btn delete"
+onclick="deleteSeller(${index})">
+
+DELETE
+
+</button>
+
+` : ``}
+
+`;
+
+sellerList.appendChild(card);
+
+});
+
+}
+
+render();
+
+function openLogin(){
+
+document.getElementById(
+"loginPanel"
+).style.display = "flex";
+
+}
+
+function closeLogin(){
+
+document.getElementById(
+"loginPanel"
+).style.display = "none";
+
+}
+
+function loginAdmin(){
+
+const pass =
+document.getElementById(
+"adminPass"
+).value;
+
+if(pass === password){
+
+adminLoggedIn = true;
+
+render();
+
+document.getElementById(
+"loginPanel"
+).style.display = "none";
+
+document.getElementById(
+"adminPanel"
+).style.display = "flex";
+
+alert("Admin Login Success");
+
+}else{
+
+alert("Wrong Password");
+
+}
+
+}
+
+function closeAdmin(){
+
+document.getElementById(
+"adminPanel"
+).style.display = "none";
+
+}
+
+document.getElementById(
+"uploadImage"
+).addEventListener(
+"change",
+function(){
+
+const file =
+this.files[0];
+
+if(file){
+
+const reader =
+new FileReader();
+
+reader.onload = function(e){
+
+const preview =
+document.getElementById(
+"previewImage"
+);
+
+preview.src =
+e.target.result;
+
+preview.style.display =
+"block";
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+}
+);
+
+function addSeller(){
+
+const name =
+document.getElementById(
+"name"
+).value.trim();
+
+const role =
+document.getElementById(
+"role"
+).value.trim();
+
+let phone =
+document.getElementById(
+"phone"
+).value.trim();
+
+const imageInput =
+document.getElementById(
+"uploadImage"
+);
+
+phone =
+phone.replace(/[^0-9]/g,"");
+
+if(name === "" ||
+role === "" ||
+phone === ""){
+
+alert("Complete all input");
+return;
+
+}
+
+const file =
+imageInput.files[0];
+
+if(!file){
+
+alert("Upload image dulu");
+return;
+
+}
+
+const reader =
+new FileReader();
+
+reader.onload = function(e){
+
+sellers.push({
+name,
+role,
+phone,
+image:e.target.result
+});
+
+render();
+
+document.getElementById(
+"name"
+).value = "";
+
+document.getElementById(
+"role"
+).value = "";
+
+document.getElementById(
+"phone"
+).value = "";
+
+document.getElementById(
+"uploadImage"
+).value = "";
+
+document.getElementById(
+"previewImage"
+).style.display = "none";
+
+alert("Seller Added");
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+function deleteSeller(index){
+
+if(!adminLoggedIn) return;
+
+const ask =
+confirm("Delete Seller?");
+
+if(!ask) return;
+
+sellers.splice(index,1);
+
+render();
+
+}
+
+/* REAL SOUND FIX */
+
+const tapScreen =
+document.getElementById(
+"tapSound"
+);
+
+const music =
+document.getElementById(
+"bgMusic"
+);
+
+tapScreen.addEventListener(
+"click",
+async () => {
+
+try{
+
+await music.play();
+
+tapScreen.style.display =
+"none";
+
+}catch(err){
+
+alert("Sound Error");
+
+}
+
+}
+);
+
+</script>
+
+</body>
+  </html>
